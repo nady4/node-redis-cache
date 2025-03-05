@@ -21,7 +21,7 @@ app.get("/characters", async (req, res) => {
       const response = await fetch("https://rickandmortyapi.com/api/character");
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log("❄️ Cache miss");
+      console.log("🛑 Cache miss");
       await client.set("characters", JSON.stringify(data));
       return res.json(data);
     } catch (error) {
@@ -44,7 +44,7 @@ app.get("/characters/:id", async (req, res) => {
       );
       if (!response.ok) throw new Error("Network response was not ok");
       const data = await response.json();
-      console.log("❄️ Cache miss");
+      console.log("🛑 Cache miss");
       await client.set(`character-${id}`, JSON.stringify(data));
       return res.json(data);
     } catch (error) {
